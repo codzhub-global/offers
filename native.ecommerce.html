@@ -169,7 +169,8 @@
     cursor: pointer;
     font: 700 10px/1.4 "Lemonada", sans-serif;
   }
-  .mobile-section-nav { display: none; }
+  .mobile-section-nav,
+  .mobile-menu-backdrop { display: none; }
   .page {
     width: 210mm;
     height: 297mm;
@@ -1061,13 +1062,933 @@
     }
   }
   @media screen and (max-width: 850px) {
+    html {
+      scroll-padding-top: 0;
+      scroll-behavior: auto;
+      background: #D8DFEC;
+    }
+    body {
+      padding: 76px 8px 24px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 92% 5%, rgba(18,216,255,.11), transparent 18rem),
+        radial-gradient(circle at 4% 35%, rgba(109,91,255,.12), transparent 22rem),
+        #D8DFEC;
+      font-size: 13px;
+    }
+    .mobile-section-nav {
+      top: 8px;
+      width: calc(100% - 16px);
+      height: 56px;
+    }
+    .custom-section-menu {
+      top: 72px;
+      width: calc(100vw - 16px);
+      max-height: calc(100dvh - 84px);
+      border-radius: 20px;
+    }
+    .custom-menu-options { max-height: calc(100dvh - 151px); }
+    .document-pages {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      zoom: 1 !important;
+    }
+    .page {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      margin: 0 0 14px;
+      overflow: hidden;
+      border-radius: 22px;
+      scroll-margin-top: 78px;
+      box-shadow: 0 13px 34px rgba(7,10,18,.16);
+    }
+    .paper { padding: 18px 16px 20px; }
+    .paper::after {
+      width: 230px;
+      height: 230px;
+      left: -155px;
+      bottom: -175px;
+      border-width: 2px;
+    }
+    .page-header {
+      height: auto;
+      min-height: 50px;
+      padding-bottom: 11px;
+      border-bottom-width: 1px;
+    }
+    .running-meta {
+      gap: 1px;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+    .running-meta strong { font-size: 10px; }
+    .toc-icon-button {
+      width: 38px;
+      height: 38px;
+      flex-basis: 38px;
+      border-width: 1px;
+      box-shadow: 0 7px 17px rgba(47,123,255,.22);
+    }
+    .toc-icon-button span { font-size: 16px; }
+    .section-heading {
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .section-heading .spark-mark {
+      width: 48px;
+      height: 48px;
+      flex-basis: 48px;
+    }
+    .kicker {
+      gap: 7px;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+    .section-no {
+      min-width: 31px;
+      padding: 3px 7px;
+      font-size: 8px;
+    }
+    h2 {
+      margin-top: 4px;
+      font-size: clamp(21px, 6.2vw, 27px);
+      line-height: 1.55;
+      letter-spacing: -.5px;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .page-content {
+      margin-top: 18px;
+      padding-bottom: 0;
+    }
+    .lead {
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .page-footer {
+      position: relative;
+      inset: auto;
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top-width: 1px;
+      font-size: 9px;
+    }
+    .page-footer .wordmark {
+      width: 118px;
+      height: 32px;
+      background-size: 116% auto;
+    }
+    .page-meta {
+      gap: 1px;
+      font-size: 8px;
+      line-height: 1.55;
+    }
+    .page-meta strong { font-size: 9px; }
+    .cover {
+      min-height: calc(100svh - 98px);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 17px 18px;
+      border-radius: 22px;
+    }
+    .cover::before {
+      left: -110px;
+      bottom: 180px;
+      width: 360px;
+      height: 360px;
+      background-size: 150% auto;
+    }
+    .cover-grid { background-size: 52px 52px; }
+    .cover-glow { filter: blur(20px); }
+    .cover-glow-one {
+      width: 145px;
+      height: 145px;
+      top: 125px;
+      left: -28px;
+    }
+    .cover-glow-two {
+      width: 95px;
+      height: 95px;
+      top: 360px;
+      left: 62%;
+    }
+    .cover-header {
+      gap: 12px;
+      padding-bottom: 15px;
+      border-bottom-width: 1px;
+    }
+    .cover-brand-lockup {
+      gap: 4px;
+      min-width: 122px;
+    }
+    .cover-brand-lockup .spark-mark {
+      width: 37px;
+      height: 37px;
+      flex-basis: 37px;
+    }
+    .cover-brand-lockup .wordmark {
+      width: 102px;
+      height: 28px;
+    }
+    .document-chip {
+      max-width: 48%;
+      padding: 7px 9px;
+      border-width: 1px;
+      font-size: 7px;
+      line-height: 1.55;
+      text-align: center;
+    }
+    .cover-copy {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: auto;
+      margin: clamp(48px, 10vh, 82px) 0 32px;
+    }
+    .cover-kicker {
+      gap: 9px;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .cover-kicker::before {
+      width: 30px;
+      height: 3px;
+    }
+    .cover h1 {
+      max-width: none;
+      margin: 18px 0 12px;
+      font-size: clamp(29px, 8.4vw, 38px);
+      line-height: 1.55;
+      letter-spacing: -1px;
+    }
+    .cover-copy p {
+      max-width: none;
+      margin-bottom: 16px;
+      color: #C2CFE0;
+      font-size: 13px;
+      line-height: 1.95;
+    }
+    .stack-line {
+      max-width: 100%;
+      padding: 8px 10px;
+      border-width: 1px;
+      border-radius: 10px;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+    .cover-price {
+      position: relative;
+      inset: auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .cover-price > div {
+      min-height: 96px;
+      padding: 15px;
+      border-width: 1px;
+      border-radius: 15px;
+    }
+    .cover-price > div:first-child { grid-column: 1 / -1; }
+    .cover-price span { font-size: 9px; }
+    .cover-price strong { font-size: 28px; }
+    .cover-price del { font-size: 18px; }
+    .cover-price .saving-chip {
+      padding: 13px 10px;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .cover-footer {
+      position: relative;
+      inset: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top-width: 1px;
+    }
+    .cover-footer span,
+    .cover-footer small {
+      font-size: 8px;
+      line-height: 1.55;
+    }
+    .cover-footer strong {
+      font-size: 9px;
+      line-height: 1.65;
+    }
+    .cover-page {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      align-self: flex-end;
+      margin-top: 12px;
+      font-size: 8px;
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .toc-layout {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .toc-summary {
+      min-height: 0;
+      padding: 18px;
+      border-radius: 18px;
+    }
+    .toc-summary .compact {
+      padding-bottom: 14px;
+      border-bottom-width: 1px;
+    }
+    .toc-summary-copy { margin-top: 22px; }
+    .toc-summary-copy > span { font-size: 10px; }
+    .toc-summary-copy h3 {
+      margin: 6px 0 9px;
+      font-size: 20px;
+    }
+    .toc-summary-copy p {
+      font-size: 11px;
+      line-height: 1.85;
+    }
+    .toc-summary-stats {
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .toc-summary-stats > div {
+      padding: 11px 12px;
+      border-width: 1px;
+      border-radius: 12px;
+    }
+    .toc-summary-stats span { font-size: 9px; }
+    .toc-summary-stats strong { font-size: 12px; }
+    .toc-summary-stats > div:first-child strong { font-size: 21px; }
+    .toc-summary-note {
+      gap: 10px;
+      margin-top: 22px;
+      padding-top: 15px;
+      border-top-width: 1px;
+      font-size: 10px;
+    }
+    .toc-list { gap: 9px; }
+    .toc-item {
+      min-height: 72px;
+      grid-template-columns: 39px minmax(0, 1fr) 18px;
+      gap: 10px;
+      padding: 11px 12px;
+      border-width: 1px;
+      border-radius: 14px;
+    }
+    .toc-no {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      font-size: 9px;
+    }
+    .toc-item strong { font-size: 11px; }
+    .toc-item small {
+      margin-top: 2px;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+    .toc-item b { font-size: 15px; }
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      box-shadow: 0 0 0 6px rgba(73,242,168,.16);
+    }
+    .metrics {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .metric {
+      min-height: 112px;
+      padding: 16px;
+      border-width: 1px;
+      border-radius: 15px;
+    }
+    .metric span { font-size: 10px; }
+    .metric strong { font-size: 27px; }
+    .metric small { font-size: 9px; }
+    .table-wrap {
+      overflow: visible;
+      margin: 16px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+    .table-wrap table,
+    .table-wrap tbody,
+    .table-wrap tr,
+    .table-wrap td {
+      display: block;
+      width: 100%;
+    }
+    .table-wrap thead { display: none; }
+    .table-wrap tbody {
+      display: grid;
+      gap: 10px;
+    }
+    .table-wrap tr {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 6px 18px rgba(11,16,32,.035);
+    }
+    .table-wrap td,
+    .dense td {
+      display: grid;
+      grid-template-columns: minmax(96px, .72fr) minmax(0, 1.45fr);
+      gap: 10px;
+      align-items: start;
+      width: auto !important;
+      padding: 11px 12px !important;
+      color: #46536A;
+      border-bottom: 1px solid #E9EEF7;
+      background: transparent;
+      font-size: 11px;
+      line-height: 1.75;
+      text-align: right;
+    }
+    .table-wrap td::before {
+      content: attr(data-label);
+      color: var(--blue);
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.75;
+    }
+    .table-wrap tr td:last-child { border-bottom: 0; }
+    .table-wrap tr.last-payment {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+    .table-wrap tr.last-payment td {
+      color: #fff;
+      background: transparent;
+    }
+    .table-wrap tr.last-payment td::before { color: var(--cyan); }
+    .comparison td:nth-child(2) { background: rgba(238,243,255,.52); }
+    .callout,
+    .callout.compact {
+      margin-top: 15px;
+      padding: 13px 14px;
+      border-right-width: 4px;
+      border-radius: 12px 0 0 12px;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+    .cards,
+    .cards.cols-2,
+    .cards.cols-3 {
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+    .card {
+      padding: 15px;
+      border-width: 1px;
+      border-radius: 15px;
+      box-shadow: 0 7px 20px rgba(11,16,32,.04);
+    }
+    .card .eyebrow {
+      margin-bottom: 4px;
+      font-size: 9px;
+    }
+    .feature-list li {
+      padding: 5px 20px 5px 0;
+      font-size: 11px;
+      line-height: 1.75;
+    }
+    .feature-list li::before {
+      top: 9px;
+      width: 10px;
+      height: 10px;
+      background:
+        radial-gradient(circle, #fff 0 2px, transparent 2.2px),
+        linear-gradient(135deg, var(--indigo), var(--cyan));
+    }
+    .pill-row {
+      gap: 7px;
+      margin-top: 15px;
+    }
+    .pill-row span {
+      padding: 6px 10px;
+      border-width: 1px;
+      font-size: 9px;
+    }
+    .flow {
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 15px;
+    }
+    .flow span {
+      min-width: 88px;
+      flex: 1 1 88px;
+      padding: 8px;
+      border-radius: 9px;
+      font-size: 10px;
+    }
+    .scope-tag {
+      min-width: 0;
+      padding: 4px 8px;
+      font-size: 9px;
+    }
+  }
+  @media screen and (max-width: 850px) {
     body { padding: 62px 8px 20px; overflow-x: hidden; }
     .page { margin: 12px auto; }
+  }
+  @media screen and (max-width: 1180px) {
+    body { padding-top: 76px; }
+    body.mobile-menu-open { overflow: hidden; }
+    .mobile-menu-backdrop {
+      position: fixed;
+      z-index: 940;
+      inset: 0;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background: rgba(7, 10, 18, .48);
+      backdrop-filter: blur(5px);
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+    .mobile-menu-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .mobile-section-nav {
+      z-index: 960;
+      width: min(760px, calc(100% - 20px));
+      height: 56px;
+      gap: 8px;
+      padding: 6px 8px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 18px;
+      background: rgba(248,251,255,.9);
+      box-shadow: 0 15px 42px rgba(7,10,18,.17);
+      backdrop-filter: blur(20px) saturate(150%);
+    }
+    .mobile-section-nav .spark-mark {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 13px;
+      background-size: 148% auto;
+      transition: transform .18s ease;
+    }
+    .mobile-section-nav .spark-mark:active { transform: scale(.94); }
+    .custom-section-select {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    .custom-section-trigger {
+      appearance: none;
+      width: 100%;
+      min-width: 0;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 5px 13px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      outline: 0;
+      background: rgba(255,255,255,.88);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+      direction: rtl;
+      cursor: pointer;
+      font-family: "Lemonada", sans-serif;
+      text-align: right;
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .custom-section-trigger:hover,
+    .custom-section-select.is-open .custom-section-trigger {
+      border-color: rgba(47,123,255,.48);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(47,123,255,.09);
+    }
+    .custom-trigger-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .custom-trigger-copy small {
+      color: #8591A6;
+      font-size: 7px;
+      font-weight: 500;
+    }
+    .custom-trigger-copy strong {
+      display: block;
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 9px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .custom-trigger-chevron {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 9px;
+      border-right: 2px solid #667085;
+      border-bottom: 2px solid #667085;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform .22s ease;
+    }
+    .custom-section-select.is-open .custom-trigger-chevron {
+      transform: rotate(225deg) translate(-1px, -1px);
+    }
+    .custom-section-menu {
+      position: fixed;
+      z-index: 3;
+      top: 76px;
+      left: 50%;
+      width: min(760px, calc(100vw - 20px));
+      max-height: min(660px, calc(100dvh - 92px));
+      overflow: hidden;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 85% 0, rgba(18,216,255,.18), transparent 32%),
+        linear-gradient(155deg, #070A12, #0C1628);
+      box-shadow: 0 28px 70px rgba(7,10,18,.35);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(-50%, -10px) scale(.985);
+      transform-origin: top center;
+      transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+    }
+    .custom-section-select.is-open .custom-section-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0) scale(1);
+    }
+    .custom-menu-head {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .custom-menu-head span {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .custom-menu-head small {
+      color: var(--cyan);
+      font-size: 8px;
+      font-weight: 600;
+    }
+    .custom-menu-head strong {
+      overflow: hidden;
+      color: #fff;
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .custom-menu-head b {
+      flex: 0 0 auto;
+      padding: 5px 9px;
+      color: #BFD0E7;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,.055);
+      font-size: 8px;
+    }
+    .custom-menu-options {
+      max-height: calc(min(660px, 100dvh - 92px) - 67px);
+      display: grid;
+      gap: 7px;
+      padding: 10px;
+      overflow: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(18,216,255,.48) transparent;
+    }
+    .custom-section-option {
+      min-height: 56px;
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr) 16px;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 10px;
+      color: rgba(225,234,246,.78);
+      border: 1px solid transparent;
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+      transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+    .custom-section-option:hover,
+    .custom-section-option.is-active {
+      color: #fff;
+      border-color: rgba(18,216,255,.22);
+      background: rgba(18,216,255,.08);
+    }
+    .custom-section-option:active { transform: scale(.985); }
+    .custom-option-no {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: var(--cyan);
+      border-radius: 11px;
+      background: rgba(18,216,255,.09);
+      direction: ltr;
+      font-size: 9px;
+      font-weight: 700;
+    }
+    .custom-section-option.is-active .custom-option-no {
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--cyan), var(--mint));
+    }
+    .custom-option-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+    .custom-option-copy strong { color: inherit; font-size: 10px; }
+    .custom-option-copy small {
+      overflow: hidden;
+      color: rgba(184,198,218,.63);
+      font-size: 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .custom-option-arrow {
+      color: var(--cyan);
+      font: 700 16px/1 system-ui, sans-serif;
+    }
+    .mobile-print {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--indigo), var(--blue) 65%, var(--cyan));
+      box-shadow: 0 7px 18px rgba(47,123,255,.24);
+      transition: transform .18s ease;
+    }
+    .mobile-print:active { transform: scale(.94); }
+    .mobile-print svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  @media screen and (max-width: 850px) {
+    body { padding: 76px 8px 24px; }
+    .page { margin: 0 0 14px; }
+    .mobile-section-nav {
+      top: 8px;
+      width: calc(100% - 16px);
+      height: 56px;
+    }
+    .custom-section-menu {
+      top: 72px;
+      width: calc(100vw - 16px);
+      max-height: calc(100dvh - 84px);
+      border-radius: 20px;
+    }
+    .custom-menu-options { max-height: calc(100dvh - 151px); }
+    .split-callouts,
+    .delivery-grid,
+    .terms-grid,
+    .acceptance-card,
+    .signature-line {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .split-callouts { margin-top: 12px; }
+    .mini-callout {
+      padding: 13px 14px;
+      border-radius: 12px;
+    }
+    .mini-callout span { font-size: 9px; }
+    .mini-callout strong {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+    .inclusion {
+      min-width: 62px;
+      padding: 4px 8px;
+      font-size: 9px;
+    }
+    .legend {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 10px;
+    }
+    .legend span { gap: 7px; }
+    .legend i {
+      width: 10px;
+      height: 10px;
+    }
+    .timeline { gap: 10px; }
+    .timeline::before {
+      right: 17px;
+      top: 18px;
+      bottom: 18px;
+      width: 3px;
+    }
+    .timeline article {
+      min-height: 0;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 11px;
+      padding: 12px;
+      border-width: 1px;
+      border-radius: 14px;
+    }
+    .timeline article > span {
+      width: 36px;
+      height: 36px;
+      border-width: 4px;
+      border-radius: 11px;
+      font-size: 9px;
+      box-shadow: 0 7px 17px rgba(47,123,255,.2);
+    }
+    .timeline h3 {
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+    .timeline p {
+      margin-bottom: 3px;
+      font-size: 10px;
+      line-height: 1.75;
+    }
+    .timeline small { font-size: 9px; }
+    .delivery-grid { margin-top: 12px; }
+    .delivery-grid article {
+      padding: 14px;
+      border-radius: 14px;
+    }
+    .delivery-grid h3 { font-size: 13px; }
+    .price-banner {
+      grid-template-columns: 1fr;
+      gap: 9px;
+      padding: 14px;
+      border-radius: 18px;
+    }
+    .price-banner > div:not(.arrow-price) {
+      min-height: 92px;
+      padding: 14px;
+      border-radius: 12px;
+    }
+    .price-banner span { font-size: 9px; }
+    .price-banner del { font-size: 20px; }
+    .price-banner strong { font-size: 24px; }
+    .price-banner .offer strong { font-size: 31px; }
+    .arrow-price {
+      height: 18px;
+      font-size: 20px;
+      transform: rotate(-90deg);
+    }
+    .pricing-notes { margin-top: 12px; }
+    .recommendation {
+      margin-top: 16px;
+      padding: 17px;
+      border-radius: 16px;
+    }
+    .recommendation span { font-size: 9px; }
+    .recommendation h3 {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    .recommendation p {
+      font-size: 11px;
+      line-height: 1.85;
+    }
+    .terms-grid article {
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 11px;
+      padding: 13px;
+      border-width: 1px;
+      border-radius: 14px;
+    }
+    .terms-grid article > span {
+      width: 36px;
+      height: 36px;
+      font-size: 9px;
+    }
+    .terms-grid h3 {
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+    .terms-grid p {
+      font-size: 10px;
+      line-height: 1.75;
+    }
+    .acceptance-card {
+      margin-top: 15px;
+      padding: 17px;
+      border-radius: 17px;
+    }
+    .acceptance-card > div:first-child > span { font-size: 9px; }
+    .acceptance-card h3 {
+      margin-top: 5px;
+      font-size: 17px;
+    }
+    .acceptance-card p {
+      font-size: 10px;
+      line-height: 1.8;
+    }
+    .acceptance-meta p {
+      gap: 10px;
+      padding-bottom: 7px;
+      margin-bottom: 7px;
+      border-bottom-width: 1px;
+    }
+    .acceptance-meta span,
+    .acceptance-meta strong { font-size: 9px; }
+    .signature-line { margin-top: 26px; }
+    .signature-line div {
+      height: 50px;
+      border-bottom-width: 1px;
+    }
+    .signature-line span { font-size: 9px; }
+  }
+  @media screen and (max-width: 430px) {
+    .custom-trigger-copy small { display: none; }
+    .custom-trigger-copy strong { font-size: 8.5px; }
+    .cover h1 { font-size: clamp(27px, 8.4vw, 34px); }
+    .table-wrap td,
+    .dense td {
+      grid-template-columns: minmax(86px, .68fr) minmax(0, 1.45fr);
+      gap: 8px;
+      padding: 10px !important;
+      font-size: 10px;
+    }
+    .table-wrap td::before { font-size: 8px; }
   }
   @media print {
     html, body { padding: 0 !important; background: #fff !important; }
     .document-sidebar,
-    .mobile-section-nav { display: none !important; }
+    .mobile-section-nav,
+    .mobile-menu-backdrop { display: none !important; }
     .document-pages { margin: 0; padding: 0; zoom: 1 !important; }
     .page { margin: 0; box-shadow: none; }
   }</style>
@@ -1131,14 +2052,210 @@
       </div>
       <button class="sidebar-print" type="button" onclick="window.print()">طباعة / حفظ PDF</button>
     </aside>
+    <div class="mobile-menu-backdrop" data-menu-backdrop></div>
     <div class="mobile-section-nav">
       <a class="spark-mark mark-on-light" href="#cover" aria-label="العودة إلى الغلاف"></a>
-      <select aria-label="الانتقال إلى قسم" onchange="if(this.value) location.href=this.value">
-        <option value="">الانتقال إلى قسم...</option>
-        <option value="#toc">الفهرس التفاعلي</option>
-        <option value="#summary">الملخص التنفيذي</option><option value="#storefront">واجهة العميل</option><option value="#commerce">محرك التجارة</option><option value="#dashboard">لوحة الإدارة</option><option value="#integrations">التكاملات</option><option value="#quality">الجودة والأمان</option><option value="#delivery">خطة التنفيذ</option><option value="#pricing">السعر والدفعات</option><option value="#comparison">اختيار التقنية</option><option value="#terms">الشروط والاعتماد</option>
-      </select>
-      <button class="mobile-print" type="button" onclick="window.print()" aria-label="طباعة أو حفظ PDF" title="طباعة أو حفظ PDF">↧</button>
+      <div class="custom-section-select" data-custom-select>
+        <button
+          class="custom-section-trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="mobile-sections-menu"
+        >
+          <span class="custom-trigger-copy">
+            <small>التنقل داخل العرض</small>
+            <strong data-select-label>الانتقال إلى قسم...</strong>
+          </span>
+          <span class="custom-trigger-chevron" aria-hidden="true"></span>
+        </button>
+        <div
+          class="custom-section-menu"
+          id="mobile-sections-menu"
+          role="listbox"
+          aria-label="أقسام عرض السعر"
+          aria-hidden="true"
+        >
+          <div class="custom-menu-head">
+            <span>
+              <small>فهرس العرض</small>
+              <strong>Native E-Commerce Platform</strong>
+            </span>
+            <b>12 صفحة</b>
+          </div>
+          <div class="custom-menu-options">
+        <a
+          class="custom-section-option"
+          href="#toc"
+          role="option"
+          data-section-link
+          data-label="الفهرس التفاعلي"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">00</span>
+          <span class="custom-option-copy">
+            <strong>الفهرس التفاعلي</strong>
+            <small>كل أقسام العرض في مكان واحد</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#summary"
+          role="option"
+          data-section-link
+          data-label="الملخص التنفيذي"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">01</span>
+          <span class="custom-option-copy">
+            <strong>الملخص التنفيذي</strong>
+            <small>السعر، المدة، والنطاق في صفحة واحدة.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#storefront"
+          role="option"
+          data-section-link
+          data-label="واجهة العميل"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">02</span>
+          <span class="custom-option-copy">
+            <strong>واجهة العميل</strong>
+            <small>رحلة التصفح والشراء والحساب.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#commerce"
+          role="option"
+          data-section-link
+          data-label="محرك التجارة"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">03</span>
+          <span class="custom-option-copy">
+            <strong>محرك التجارة</strong>
+            <small>المنتجات والمخزون والعروض والطلبات.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#dashboard"
+          role="option"
+          data-section-link
+          data-label="لوحة الإدارة"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">04</span>
+          <span class="custom-option-copy">
+            <strong>لوحة الإدارة</strong>
+            <small>التشغيل اليومي والصلاحيات والتقارير.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#integrations"
+          role="option"
+          data-section-link
+          data-label="التكاملات"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">05</span>
+          <span class="custom-option-copy">
+            <strong>التكاملات</strong>
+            <small>الدفع والشحن والإشعارات والتحليلات.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#quality"
+          role="option"
+          data-section-link
+          data-label="الجودة والأمان"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">06</span>
+          <span class="custom-option-copy">
+            <strong>الجودة والأمان</strong>
+            <small>الأداء، الحماية، والاختبارات.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#delivery"
+          role="option"
+          data-section-link
+          data-label="خطة التنفيذ"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">07</span>
+          <span class="custom-option-copy">
+            <strong>خطة التنفيذ</strong>
+            <small>المراحل والمخرجات ومتطلبات العميل.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#pricing"
+          role="option"
+          data-section-link
+          data-label="السعر والدفعات"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">08</span>
+          <span class="custom-option-copy">
+            <strong>السعر والدفعات</strong>
+            <small>الخصم وجدول الاستحقاقات.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#comparison"
+          role="option"
+          data-section-link
+          data-label="اختيار التقنية"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">09</span>
+          <span class="custom-option-copy">
+            <strong>اختيار التقنية</strong>
+            <small>الفروق العملية بين الحلّين.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a>
+        <a
+          class="custom-section-option"
+          href="#terms"
+          role="option"
+          data-section-link
+          data-label="الشروط والاعتماد"
+          aria-selected="false"
+        >
+          <span class="custom-option-no">10</span>
+          <span class="custom-option-copy">
+            <strong>الشروط والاعتماد</strong>
+            <small>النطاق والضمان والقبول.</small>
+          </span>
+          <span class="custom-option-arrow" aria-hidden="true">←</span>
+        </a></div>
+        </div>
+      </div>
+      <button class="mobile-print" type="button" onclick="window.print()" aria-label="طباعة أو حفظ PDF" title="طباعة أو حفظ PDF">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2" />
+        </svg>
+      </button>
     </div>
   <div class="document-pages">
     
@@ -1362,7 +2479,7 @@
       <table class="">
         <thead><tr><th>البند</th><th>القرار التنفيذي</th></tr></thead>
         <tbody>
-          <tr class=""><td>نوع الحل</td><td><span class="en">React</span> + <span class="en">Node.js / Express</span> + <span class="en">PostgreSQL</span> مع <span class="en">REST API</span> ولوحة إدارة مخصصة.</td></tr><tr class=""><td>نموذج المتجر</td><td>متجر إلكتروني B2C أحادي البائع، قابل للتطبيق على مختلف الأنشطة التجارية.</td></tr><tr class=""><td>التجربة</td><td>واجهة عميل متجاوبة + رحلة شراء كاملة + لوحة إدارة وتشغيل.</td></tr><tr class=""><td>الدفع</td><td>الدفع عند الاستلام + ربط بوابة إلكترونية واحدة عند توفير حساب التاجر وبيانات الربط.</td></tr><tr class=""><td>المحتوى</td><td>تهيئة الهيكل وإدخال عينة تشغيلية، مع قالب منظم للاستيراد الجماعي.</td></tr><tr class=""><td>التسليم</td><td>7–10 أسابيع عمل من اعتماد المتطلبات واستلام المحتوى والبيانات اللازمة.</td></tr><tr class=""><td>الضمان</td><td>45 يومًا دعم إصلاحي للأخطاء البرمجية ضمن النطاق بعد الإطلاق.</td></tr>
+          <tr class=""><td data-label="البند">نوع الحل</td><td data-label="القرار التنفيذي"><span class="en">React</span> + <span class="en">Node.js / Express</span> + <span class="en">PostgreSQL</span> مع <span class="en">REST API</span> ولوحة إدارة مخصصة.</td></tr><tr class=""><td data-label="البند">نموذج المتجر</td><td data-label="القرار التنفيذي">متجر إلكتروني B2C أحادي البائع، قابل للتطبيق على مختلف الأنشطة التجارية.</td></tr><tr class=""><td data-label="البند">التجربة</td><td data-label="القرار التنفيذي">واجهة عميل متجاوبة + رحلة شراء كاملة + لوحة إدارة وتشغيل.</td></tr><tr class=""><td data-label="البند">الدفع</td><td data-label="القرار التنفيذي">الدفع عند الاستلام + ربط بوابة إلكترونية واحدة عند توفير حساب التاجر وبيانات الربط.</td></tr><tr class=""><td data-label="البند">المحتوى</td><td data-label="القرار التنفيذي">تهيئة الهيكل وإدخال عينة تشغيلية، مع قالب منظم للاستيراد الجماعي.</td></tr><tr class=""><td data-label="البند">التسليم</td><td data-label="القرار التنفيذي">7–10 أسابيع عمل من اعتماد المتطلبات واستلام المحتوى والبيانات اللازمة.</td></tr><tr class=""><td data-label="البند">الضمان</td><td data-label="القرار التنفيذي">45 يومًا دعم إصلاحي للأخطاء البرمجية ضمن النطاق بعد الإطلاق.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1516,7 +2633,7 @@
       <table class="dense">
         <thead><tr><th>الوحدة</th><th>أهم الإمكانات</th><th>نوع الإدارة</th></tr></thead>
         <tbody>
-          <tr class=""><td><strong>المؤشرات</strong></td><td>مبيعات وطلبات ومتوسط السلة ومعدلات الحالة والمنتجات الأعلى وانخفاض المخزون.</td><td><span class="scope-tag">Custom KPIs</span></td></tr><tr class=""><td><strong>المنتجات</strong></td><td>CRUD كامل، خصائص ومتغيرات، صور، SKU، أسعار، ظهور، SEO، واستيراد/تصدير.</td><td><span class="scope-tag">Custom CRUD</span></td></tr><tr class=""><td><strong>الفئات والخصائص</strong></td><td>هيكل فئات، خصائص قابلة لإعادة الاستخدام، وقيم فلاتر منظمة.</td><td><span class="scope-tag">Data Model</span></td></tr><tr class=""><td><strong>المخزون</strong></td><td>رصيد لكل متغير، تنبيهات، منع السالب، وتسويات مع سبب ومسؤول.</td><td><span class="scope-tag">Inventory</span></td></tr><tr class=""><td><strong>الطلبات</strong></td><td>بحث وفلاتر وحالات، Timeline، ملاحظات، طباعة، وإجراءات تشغيل محددة.</td><td><span class="scope-tag">Operations</span></td></tr><tr class=""><td><strong>العملاء</strong></td><td>ملف العميل، العناوين، الطلبات، حالة الحساب، وتصدير وفق الصلاحية.</td><td><span class="scope-tag">CRM Lite</span></td></tr><tr class=""><td><strong>الكوبونات</strong></td><td>قواعد مبلغ/نسبة، مدة، حدود استخدام، سلة، فئات، ومنتجات.</td><td><span class="scope-tag">Rules Engine</span></td></tr><tr class=""><td><strong>الشحن والدفع</strong></td><td>طرق وحالات وقواعد أساسية، مع شاشة إعدادات منفصلة وآمنة.</td><td><span class="scope-tag">Settings</span></td></tr><tr class=""><td><strong>المستخدمون والأدوار</strong></td><td>Super Admin وManager وOperations وContent بصلاحيات دقيقة.</td><td><span class="scope-tag">RBAC</span></td></tr><tr class=""><td><strong>التقارير والسجل</strong></td><td>تقارير تشغيلية وتصدير CSV وسجل Audit لأهم تغييرات الإدارة.</td><td><span class="scope-tag">Audit + Export</span></td></tr>
+          <tr class=""><td data-label="الوحدة"><strong>المؤشرات</strong></td><td data-label="أهم الإمكانات">مبيعات وطلبات ومتوسط السلة ومعدلات الحالة والمنتجات الأعلى وانخفاض المخزون.</td><td data-label="نوع الإدارة"><span class="scope-tag">Custom KPIs</span></td></tr><tr class=""><td data-label="الوحدة"><strong>المنتجات</strong></td><td data-label="أهم الإمكانات">CRUD كامل، خصائص ومتغيرات، صور، SKU، أسعار، ظهور، SEO، واستيراد/تصدير.</td><td data-label="نوع الإدارة"><span class="scope-tag">Custom CRUD</span></td></tr><tr class=""><td data-label="الوحدة"><strong>الفئات والخصائص</strong></td><td data-label="أهم الإمكانات">هيكل فئات، خصائص قابلة لإعادة الاستخدام، وقيم فلاتر منظمة.</td><td data-label="نوع الإدارة"><span class="scope-tag">Data Model</span></td></tr><tr class=""><td data-label="الوحدة"><strong>المخزون</strong></td><td data-label="أهم الإمكانات">رصيد لكل متغير، تنبيهات، منع السالب، وتسويات مع سبب ومسؤول.</td><td data-label="نوع الإدارة"><span class="scope-tag">Inventory</span></td></tr><tr class=""><td data-label="الوحدة"><strong>الطلبات</strong></td><td data-label="أهم الإمكانات">بحث وفلاتر وحالات، Timeline، ملاحظات، طباعة، وإجراءات تشغيل محددة.</td><td data-label="نوع الإدارة"><span class="scope-tag">Operations</span></td></tr><tr class=""><td data-label="الوحدة"><strong>العملاء</strong></td><td data-label="أهم الإمكانات">ملف العميل، العناوين، الطلبات، حالة الحساب، وتصدير وفق الصلاحية.</td><td data-label="نوع الإدارة"><span class="scope-tag">CRM Lite</span></td></tr><tr class=""><td data-label="الوحدة"><strong>الكوبونات</strong></td><td data-label="أهم الإمكانات">قواعد مبلغ/نسبة، مدة، حدود استخدام، سلة، فئات، ومنتجات.</td><td data-label="نوع الإدارة"><span class="scope-tag">Rules Engine</span></td></tr><tr class=""><td data-label="الوحدة"><strong>الشحن والدفع</strong></td><td data-label="أهم الإمكانات">طرق وحالات وقواعد أساسية، مع شاشة إعدادات منفصلة وآمنة.</td><td data-label="نوع الإدارة"><span class="scope-tag">Settings</span></td></tr><tr class=""><td data-label="الوحدة"><strong>المستخدمون والأدوار</strong></td><td data-label="أهم الإمكانات">Super Admin وManager وOperations وContent بصلاحيات دقيقة.</td><td data-label="نوع الإدارة"><span class="scope-tag">RBAC</span></td></tr><tr class=""><td data-label="الوحدة"><strong>التقارير والسجل</strong></td><td data-label="أهم الإمكانات">تقارير تشغيلية وتصدير CSV وسجل Audit لأهم تغييرات الإدارة.</td><td data-label="نوع الإدارة"><span class="scope-tag">Audit + Export</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1564,7 +2681,7 @@
       <table class="dense">
         <thead><tr><th>التكامل / الخدمة</th><th>المشمول</th><th>التوضيح</th></tr></thead>
         <tbody>
-          <tr class=""><td>الدفع عند الاستلام</td><td><span class="inclusion included">مشمول</span></td><td>طريقة دفع أصلية بقواعد وحالة طلب واضحة.</td></tr><tr class=""><td>Paymob أو بوابة واحدة</td><td><span class="inclusion configured">تهيئة</span></td><td>تكامل Backend وتحقق من Webhook/Callback عند توفر الحساب والمفاتيح.</td></tr><tr class=""><td>مناطق وأسعار الشحن</td><td><span class="inclusion included">مشمول</span></td><td>مناطق، سعر ثابت، حد شحن مجاني، واستلام محلي حسب النطاق.</td></tr><tr class=""><td>شركة شحن عبر API</td><td><span class="inclusion external">خارجي</span></td><td>تُسعّر بعد توثيق الشركة وتحديد إنشاء الشحنة والتتبع والإلغاء.</td></tr><tr class=""><td>إيميلات النظام</td><td><span class="inclusion included">مشمول</span></td><td>قوالب أساسية لتأكيد الطلب وتغيير الحالة واسترجاع كلمة المرور.</td></tr><tr class=""><td>WhatsApp / SMS</td><td><span class="inclusion external">خارجي</span></td><td>يتطلب مزودًا رسميًا وتكلفة رسائل؛ يُضاف بعد اختيار المزود.</td></tr><tr class=""><td>Google Analytics 4</td><td><span class="inclusion configured">تهيئة</span></td><td>أحداث أساسية للعرض والإضافة للسلة وبدء/اكتمال الشراء عند توفير الحساب.</td></tr><tr class=""><td>Storage للصور</td><td><span class="inclusion configured">تهيئة</span></td><td>Local في التطوير وObject Storage/CDN في الإنتاج حسب الاستضافة المختارة.</td></tr>
+          <tr class=""><td data-label="التكامل / الخدمة">الدفع عند الاستلام</td><td data-label="المشمول"><span class="inclusion included">مشمول</span></td><td data-label="التوضيح">طريقة دفع أصلية بقواعد وحالة طلب واضحة.</td></tr><tr class=""><td data-label="التكامل / الخدمة">Paymob أو بوابة واحدة</td><td data-label="المشمول"><span class="inclusion configured">تهيئة</span></td><td data-label="التوضيح">تكامل Backend وتحقق من Webhook/Callback عند توفر الحساب والمفاتيح.</td></tr><tr class=""><td data-label="التكامل / الخدمة">مناطق وأسعار الشحن</td><td data-label="المشمول"><span class="inclusion included">مشمول</span></td><td data-label="التوضيح">مناطق، سعر ثابت، حد شحن مجاني، واستلام محلي حسب النطاق.</td></tr><tr class=""><td data-label="التكامل / الخدمة">شركة شحن عبر API</td><td data-label="المشمول"><span class="inclusion external">خارجي</span></td><td data-label="التوضيح">تُسعّر بعد توثيق الشركة وتحديد إنشاء الشحنة والتتبع والإلغاء.</td></tr><tr class=""><td data-label="التكامل / الخدمة">إيميلات النظام</td><td data-label="المشمول"><span class="inclusion included">مشمول</span></td><td data-label="التوضيح">قوالب أساسية لتأكيد الطلب وتغيير الحالة واسترجاع كلمة المرور.</td></tr><tr class=""><td data-label="التكامل / الخدمة">WhatsApp / SMS</td><td data-label="المشمول"><span class="inclusion external">خارجي</span></td><td data-label="التوضيح">يتطلب مزودًا رسميًا وتكلفة رسائل؛ يُضاف بعد اختيار المزود.</td></tr><tr class=""><td data-label="التكامل / الخدمة">Google Analytics 4</td><td data-label="المشمول"><span class="inclusion configured">تهيئة</span></td><td data-label="التوضيح">أحداث أساسية للعرض والإضافة للسلة وبدء/اكتمال الشراء عند توفير الحساب.</td></tr><tr class=""><td data-label="التكامل / الخدمة">Storage للصور</td><td data-label="المشمول"><span class="inclusion configured">تهيئة</span></td><td data-label="التوضيح">Local في التطوير وObject Storage/CDN في الإنتاج حسب الاستضافة المختارة.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1632,7 +2749,7 @@
       <table class="dense">
         <thead><tr><th>بوابة الجودة</th><th>معيار القبول</th></tr></thead>
         <tbody>
-          <tr class=""><td><strong>اختبارات Backend</strong></td><td>اختبارات لوحدات الأعمال الحرجة وتكامل دورة الطلب والمخزون والدفع وفق بيئة المشروع.</td></tr><tr class=""><td><strong>صلاحيات الإدارة</strong></td><td>منع الوصول لكل Endpoint وإجراء وشاشة خارج الدور المسموح، وليس إخفاء زر الواجهة فقط.</td></tr><tr class=""><td><strong>سلامة الطلب</strong></td><td>السعر والمخزون والكوبون والشحن يعاد التحقق منها على الخادم داخل Transaction قبل التأكيد.</td></tr><tr class=""><td><strong>رحلة E2E</strong></td><td>تصفح، تسجيل/دخول، سلة، Checkout، طلب، إشعار، ومعالجة إدارية للحالات الأساسية.</td></tr>
+          <tr class=""><td data-label="بوابة الجودة"><strong>اختبارات Backend</strong></td><td data-label="معيار القبول">اختبارات لوحدات الأعمال الحرجة وتكامل دورة الطلب والمخزون والدفع وفق بيئة المشروع.</td></tr><tr class=""><td data-label="بوابة الجودة"><strong>صلاحيات الإدارة</strong></td><td data-label="معيار القبول">منع الوصول لكل Endpoint وإجراء وشاشة خارج الدور المسموح، وليس إخفاء زر الواجهة فقط.</td></tr><tr class=""><td data-label="بوابة الجودة"><strong>سلامة الطلب</strong></td><td data-label="معيار القبول">السعر والمخزون والكوبون والشحن يعاد التحقق منها على الخادم داخل Transaction قبل التأكيد.</td></tr><tr class=""><td data-label="بوابة الجودة"><strong>رحلة E2E</strong></td><td data-label="معيار القبول">تصفح، تسجيل/دخول، سلة، Checkout، طلب، إشعار، ومعالجة إدارية للحالات الأساسية.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1771,7 +2888,7 @@
       <table class="">
         <thead><tr><th>مرحلة الدفع</th><th>النسبة</th><th>القيمة</th><th>موعد الاستحقاق</th></tr></thead>
         <tbody>
-          <tr class=""><td>الدفعة 1</td><td>40%</td><td><span class="money">$900</span></td><td>عند اعتماد العرض وبدء التحليل والتنفيذ.</td></tr><tr class=""><td>الدفعة 2</td><td>30%</td><td><span class="money">$675</span></td><td>بعد تسليم نسخة Backend/Admin تجريبية قابلة للمراجعة.</td></tr><tr class=""><td>الدفعة 3</td><td>20%</td><td><span class="money">$450</span></td><td>بعد اكتمال واجهة العميل والتكاملات الأساسية.</td></tr><tr class="last-payment"><td>الدفعة 4</td><td>10%</td><td><span class="money">$225</span></td><td>قبل الإطلاق وتسليم الكود والوصول النهائي.</td></tr>
+          <tr class=""><td data-label="مرحلة الدفع">الدفعة 1</td><td data-label="النسبة">40%</td><td data-label="القيمة"><span class="money">$900</span></td><td data-label="موعد الاستحقاق">عند اعتماد العرض وبدء التحليل والتنفيذ.</td></tr><tr class=""><td data-label="مرحلة الدفع">الدفعة 2</td><td data-label="النسبة">30%</td><td data-label="القيمة"><span class="money">$675</span></td><td data-label="موعد الاستحقاق">بعد تسليم نسخة Backend/Admin تجريبية قابلة للمراجعة.</td></tr><tr class=""><td data-label="مرحلة الدفع">الدفعة 3</td><td data-label="النسبة">20%</td><td data-label="القيمة"><span class="money">$450</span></td><td data-label="موعد الاستحقاق">بعد اكتمال واجهة العميل والتكاملات الأساسية.</td></tr><tr class="last-payment"><td data-label="مرحلة الدفع">الدفعة 4</td><td data-label="النسبة">10%</td><td data-label="القيمة"><span class="money">$225</span></td><td data-label="موعد الاستحقاق">قبل الإطلاق وتسليم الكود والوصول النهائي.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1826,7 +2943,7 @@
       <table class="comparison">
         <thead><tr><th>محور القرار</th><th>WordPress + WooCommerce</th><th>Native React + Node</th></tr></thead>
         <tbody>
-          <tr class=""><td>تكلفة التنفيذ</td><td>أقل</td><td>أعلى بسبب بناء النظام ولوحة الإدارة والـAPI.</td></tr><tr class=""><td>زمن الإطلاق</td><td>أسرع</td><td>أطول مع مراحل تحليل وتطوير واختبار أوسع.</td></tr><tr class=""><td>التخصيص</td><td>قوي ضمن بيئة WooCommerce والإضافات</td><td>مرن جدًا ويمكن صياغة سير العمل حسب النشاط.</td></tr><tr class=""><td>لوحة الإدارة</td><td>لوحة WooCommerce جاهزة وقابلة للتخصيص</td><td>لوحة مخصصة للعمليات والأدوار والتقارير.</td></tr><tr class=""><td>الاعتماديات</td><td>قالب وإضافات وتوافق تحديثات</td><td>كود وقاعدة بيانات وبنية تشغيل مملوكة للمشروع.</td></tr><tr class=""><td>أفضل اختيار عندما</td><td>السرعة والميزانية والوظائف القياسية هي الأولوية</td><td>التميز التشغيلي والتوسع والربط العميق هي الأولوية.</td></tr>
+          <tr class=""><td data-label="محور القرار">تكلفة التنفيذ</td><td data-label="WordPress + WooCommerce">أقل</td><td data-label="Native React + Node">أعلى بسبب بناء النظام ولوحة الإدارة والـAPI.</td></tr><tr class=""><td data-label="محور القرار">زمن الإطلاق</td><td data-label="WordPress + WooCommerce">أسرع</td><td data-label="Native React + Node">أطول مع مراحل تحليل وتطوير واختبار أوسع.</td></tr><tr class=""><td data-label="محور القرار">التخصيص</td><td data-label="WordPress + WooCommerce">قوي ضمن بيئة WooCommerce والإضافات</td><td data-label="Native React + Node">مرن جدًا ويمكن صياغة سير العمل حسب النشاط.</td></tr><tr class=""><td data-label="محور القرار">لوحة الإدارة</td><td data-label="WordPress + WooCommerce">لوحة WooCommerce جاهزة وقابلة للتخصيص</td><td data-label="Native React + Node">لوحة مخصصة للعمليات والأدوار والتقارير.</td></tr><tr class=""><td data-label="محور القرار">الاعتماديات</td><td data-label="WordPress + WooCommerce">قالب وإضافات وتوافق تحديثات</td><td data-label="Native React + Node">كود وقاعدة بيانات وبنية تشغيل مملوكة للمشروع.</td></tr><tr class=""><td data-label="محور القرار">أفضل اختيار عندما</td><td data-label="WordPress + WooCommerce">السرعة والميزانية والوظائف القياسية هي الأولوية</td><td data-label="Native React + Node">التميز التشغيلي والتوسع والربط العميق هي الأولوية.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1922,37 +3039,93 @@
   </div>
   <script>
     const sidebarLinks = [...document.querySelectorAll(".sidebar-nav a")];
-    const observedSections = sidebarLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean);
+    const mobileSectionLinks = [...document.querySelectorAll("[data-section-link]")];
+    const customSelect = document.querySelector("[data-custom-select]");
+    const customTrigger = document.querySelector(".custom-section-trigger");
+    const customMenu = document.querySelector(".custom-section-menu");
+    const customLabel = document.querySelector("[data-select-label]");
+    const menuBackdrop = document.querySelector("[data-menu-backdrop]");
+
+    const setMenuOpen = (open, restoreFocus = false) => {
+      if (!customSelect || !customTrigger || !customMenu || !menuBackdrop) return;
+      customSelect.classList.toggle("is-open", open);
+      menuBackdrop.classList.toggle("is-open", open);
+      document.body.classList.toggle("mobile-menu-open", open);
+      customTrigger.setAttribute("aria-expanded", String(open));
+      customMenu.setAttribute("aria-hidden", String(!open));
+      if (open) {
+        const activeLink =
+          customMenu.querySelector(".custom-section-option.is-active") ||
+          mobileSectionLinks[0];
+        if (activeLink) requestAnimationFrame(() => activeLink.focus());
+      } else if (restoreFocus) {
+        customTrigger.focus();
+      }
+    };
+
+    if (customTrigger) {
+      customTrigger.addEventListener("click", () => {
+        setMenuOpen(!customSelect.classList.contains("is-open"));
+      });
+    }
+    if (menuBackdrop) {
+      menuBackdrop.addEventListener("click", () => setMenuOpen(false, true));
+    }
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && customSelect?.classList.contains("is-open")) {
+        setMenuOpen(false, true);
+      }
+    });
+    mobileSectionLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (customLabel) customLabel.textContent = link.dataset.label;
+        setMenuOpen(false);
+      });
+    });
+    document
+      .querySelector(".mobile-section-nav .spark-mark")
+      ?.addEventListener("click", () => setMenuOpen(false));
+
+    const allSectionLinks = [...sidebarLinks, ...mobileSectionLinks];
+    const observedSections = [
+      ...new Map(
+        allSectionLinks
+          .map((link) => {
+            const section = document.querySelector(link.getAttribute("href"));
+            return section ? [section.id, section] : null;
+          })
+          .filter(Boolean)
+      ).values(),
+    ];
+    const activateSection = (sectionId) => {
+      const targetHash = "#" + sectionId;
+      sidebarLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === targetHash);
+      });
+      mobileSectionLinks.forEach((link) => {
+        const active = link.getAttribute("href") === targetHash;
+        link.classList.toggle("is-active", active);
+        link.setAttribute("aria-selected", String(active));
+        if (active && customLabel) customLabel.textContent = link.dataset.label;
+      });
+    };
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          sidebarLinks.forEach((link) => {
-            link.classList.toggle(
-              "active",
-              link.getAttribute("href") === "#" + entry.target.id
-            );
-          });
+          activateSection(entry.target.id);
         });
-      }, { rootMargin: "-25% 0px -65% 0px", threshold: 0 });
+      }, { rootMargin: "-22% 0px -62% 0px", threshold: 0 });
       observedSections.forEach((section) => observer.observe(section));
     }
-    const documentPages = document.querySelector(".document-pages");
-    const firstPage = document.querySelector(".page");
-    const fitDocumentToPhone = () => {
-      if (!documentPages || !firstPage) return;
-      if (window.innerWidth > 850) {
-        documentPages.style.zoom = "";
-        return;
-      }
-      const availableWidth = Math.max(280, window.innerWidth - 16);
-      const pageWidth = firstPage.offsetWidth || 794;
-      documentPages.style.zoom = String(Math.min(1, availableWidth / pageWidth));
-    };
-    fitDocumentToPhone();
-    window.addEventListener("resize", fitDocumentToPhone, { passive: true });
+    if (location.hash) activateSection(location.hash.slice(1));
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.innerWidth > 1180) setMenuOpen(false);
+      },
+      { passive: true }
+    );
   </script>
 </body>
 </html>
